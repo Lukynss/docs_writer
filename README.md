@@ -1,41 +1,82 @@
-# Docs Writer Project
+# Docs Writer - macOS Typing Simulator
 
 ## Overview
-The Docs Writer project aims to provide users with a streamlined and efficient way to create and manage documentation for their projects. It offers features that cater to both developers and end-users, ensuring that the documentation is not only comprehensive but also easy to navigate.
+Docs Writer is a lightweight macOS application built with Python (tkinter + Quartz CGEvents) that automatically types text character-by-character into any application. It simulates human-like typing behavior with randomized delays, pauses, occasional fast bursts, and a freeze effect that mimics natural thinking patterns.
 
 ## Features
-- **User-friendly Interface**: Easy to use interface that allows users to create documentation with minimal effort.
-- **Markdown Support**: Write documentation in Markdown, ensuring rich formatting without complexity.
-- **Version Control**: Keep track of changes in documentation with version control, allowing users to revert to previous versions when necessary.
-- **Multi-language Support**: Cater to a global audience by supporting documentation in multiple languages.
+- **Human-like Typing Simulation**: Generates realistic typing patterns with random delays between characters
+- **Advanced Pause System**: Configurable pauses after words, sentences, and paragraphs
+- **Freeze Effect**: Simulates human thinking with random pauses (configurable chance, min/max duration)
+- **Occasional Speed Bursts**: Realistic typing variations including sudden fast typing
+- **User-Friendly GUI**: Built with tkinter featuring:
+  - Text input area for content to be typed
+  - Start/Stop/Clear control buttons
+  - ttk.Spinbox controls for freeze effect configuration (percentage chance, min/max duration in seconds)
+- **Global Keyboard Shortcut**: ESC key stops typing globally via pynput Listener
+- **Background Threading**: Typing runs in a background thread, UI updates via root.after()
+
+## Requirements
+- macOS
+- Python 3.x
+- Accessibility permissions enabled in macOS System Settings
 
 ## Installation
-To get started with the Docs Writer project, clone the repository and install the necessary dependencies:
+
+1. **Clone the repository**:
 ```bash
 git clone https://github.com/Lukynss/docs_writer.git
 cd docs_writer
-npm install
 ```
+
+2. **Set up virtual environment**:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+3. **Install dependencies**:
+```bash
+pip install -r requirements.txt
+```
+
+4. **Grant Accessibility Permissions**:
+   - Open System Settings → Privacy & Security → Accessibility
+   - Add Terminal or your Python IDE to the allowed apps list
 
 ## Usage
-To launch the application, run:
+
+Run the application:
 ```bash
-npm start
+.venv/bin/python docs_writer.py
 ```
 
-Visit `http://localhost:3000` in your web browser to access the Docs Writer interface.
+### How to Use
+1. Paste or type the text you want to be automatically typed into the text field
+2. Click in the target application where you want the text to appear
+3. Press the **Start** button in Docs Writer
+4. The application will begin typing with human-like patterns
+5. Press **Stop** to pause or **ESC** to stop globally
+6. Use **Clear** to reset the text field
 
-## Contributing
-We welcome contributions to the Docs Writer project! Please adhere to the following guidelines:
-- Fork the repository
-- Create a new branch for your feature/fix
-- Open a pull request with a description of your changes
+### Configuration
+Use the GUI controls to adjust:
+- **Freeze Chance (%)**: Probability of random pauses occurring
+- **Freeze Min (sec)**: Minimum duration of pause effect
+- **Freeze Max (sec)**: Maximum duration of pause effect
+
+## Development
+
+### Building with py2app
+The `setup.py` file is configured for creating a standalone macOS application bundle:
+```bash
+python setup.py py2app
+```
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
-For any inquiries or feedback, please contact us at support@docswriter.com.
+## Contributing
+Contributions are welcome! Please feel free to submit issues and pull requests.
 
-### Current Date and Time
-2026-04-13 10:15:48 UTC
+## Support
+For issues or questions, please open an issue on the GitHub repository.
